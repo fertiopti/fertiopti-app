@@ -4,23 +4,25 @@ import 'package:intl/intl.dart';
 
 class EHelperFunctions {
   static void showSnackBar(BuildContext context, String message) {
+    final dark = EHelperFunctions.isDarkMode(context);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           message,
-          style: GoogleFonts.poppins(color: Theme.of(context).colorScheme.primary),
+          style:
+              GoogleFonts.poppins(color: Theme.of(context).colorScheme.primary),
         ),
-        backgroundColor: Colors.white70,
+        backgroundColor: dark ? Colors.black : Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
     );
   }
+
   static Future<void> selectDate(
       BuildContext context,
       int index,
       List<Map<String, dynamic>> items,
-      void Function(int index, String date) onDateSelected
-      ) async {
+      void Function(int index, String date) onDateSelected) async {
     final DateTime currentDate = DateTime.now();
     final DateTime initialDate = items[index]['date'] != null
         ? DateTime.parse(items[index]['date'])
@@ -34,16 +36,23 @@ class EHelperFunctions {
         return Theme(
           data: theme.copyWith(
             textTheme: theme.textTheme.copyWith(
-              bodyLarge: TextStyle(color: colorScheme.primary), // For larger text
-              bodyMedium: TextStyle(color: colorScheme.primary), // For smaller text
+              bodyLarge:
+                  TextStyle(color: colorScheme.primary), // For larger text
+              bodyMedium:
+                  TextStyle(color: colorScheme.primary), // For smaller text
             ),
-            buttonTheme: const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            buttonTheme:
+                const ButtonThemeData(textTheme: ButtonTextTheme.primary),
             dialogBackgroundColor: colorScheme.surfaceContainer,
-            colorScheme: colorScheme.copyWith(
-              primary: colorScheme.primary, // Header color
-              secondary: colorScheme.primary, // Color of the selected date
-              onSurface: colorScheme.surfaceContainer, // Default text color
-            ).copyWith(onSurface: colorScheme.primary), // Background color of the dialog
+            colorScheme: colorScheme
+                .copyWith(
+                  primary: colorScheme.primary, // Header color
+                  secondary: colorScheme.primary, // Color of the selected date
+                  onSurface: colorScheme.surfaceContainer, // Default text color
+                )
+                .copyWith(
+                    onSurface:
+                        colorScheme.primary), // Background color of the dialog
           ),
           child: AlertDialog(
             title: Text(
@@ -61,7 +70,8 @@ class EHelperFunctions {
                 },
               ),
             ),
-            backgroundColor: colorScheme.surface, // Background color of the dialog
+            backgroundColor:
+                colorScheme.surface, // Background color of the dialog
             actions: [
               TextButton(
                 onPressed: () => Navigator.of(context).pop(),
@@ -89,8 +99,7 @@ class EHelperFunctions {
     }
   }
 
-
-  static void showAlert(BuildContext context,String title, String message) {
+  static void showAlert(BuildContext context, String title, String message) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -134,12 +143,15 @@ class EHelperFunctions {
   static double screenHeight(BuildContext context) {
     return MediaQuery.of(context).size.height;
   }
+
   static double spaceBetweenItems(BuildContext context) {
-    return MediaQuery.of(context).size.height*.02;
+    return MediaQuery.of(context).size.height * .02;
   }
+
   static double spaceBetweenIcons(BuildContext context) {
-    return MediaQuery.of(context).size.width*.02;
+    return MediaQuery.of(context).size.width * .02;
   }
+
   static double screenWidth(BuildContext context) {
     return MediaQuery.of(context).size.width;
   }

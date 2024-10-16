@@ -10,6 +10,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:lottie/lottie.dart';
+import 'package:flutter/services.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -55,7 +56,10 @@ class _LoginState extends State<Login> {
                 ),
                 Text(
                   ETexts.loginTitle,
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24, color: Colors.white70),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 24,
+                      color: Colors.white70),
                   //style: TextStyle(color: Colors.black, fontSize: 45),
                 ),
                 const SizedBox(
@@ -64,7 +68,10 @@ class _LoginState extends State<Login> {
                 Text(
                   ETexts.loginSubTitle,
                   // style: Theme.of(context).textTheme.bodyMedium,
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14, color: Colors.white),
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 14,
+                      color: Colors.white),
                   //style: TextStyle(fontSize: 17, color: Colors.black),
                 ),
                 const SizedBox(
@@ -74,39 +81,58 @@ class _LoginState extends State<Login> {
                 TextField(
                   controller: email,
                   cursorColor: Colors.white70,
-                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600), // Text color for better contrast
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontWeight:
+                          FontWeight.w600), // Text color for better contrast
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor: Colors.transparent.withOpacity(0.15), // Slightly darker green to make it stand out
-                    prefixIcon:  Icon(
+                    fillColor: Colors.transparent.withOpacity(
+                        0.15), // Slightly darker green to make it stand out
+                    prefixIcon: Icon(
                       Icons.email_outlined,
-                      color: Colors.white.withOpacity(.9), // White icon for contrast
+                      color: Colors.white
+                          .withOpacity(.9), // White icon for contrast
                     ),
                     labelText: ETexts.email,
-                    labelStyle: const TextStyle(color: Colors.white60, fontSize: 16, fontWeight: FontWeight.w600), // Lighten and adjust the label text color
-                    floatingLabelBehavior: FloatingLabelBehavior.auto, // Smooth transition effect for the label
+                    labelStyle: const TextStyle(
+                        color: Colors.white60,
+                        fontSize: 16,
+                        fontWeight: FontWeight
+                            .w600), // Lighten and adjust the label text color
+                    floatingLabelBehavior: FloatingLabelBehavior
+                        .auto, // Smooth transition effect for the label
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0), // White border when focused
+                      borderSide: const BorderSide(
+                          color: Colors.white,
+                          width: 2.0), // White border when focused
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: BorderSide(color: Colors.white.withOpacity(0.6), width: 1.5), // Semi-transparent white border when not focused
+                      borderSide: BorderSide(
+                          color: Colors.white.withOpacity(0.6),
+                          width:
+                              1.5), // Semi-transparent white border when not focused
                     ),
                     errorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: const BorderSide(color: Colors.red, width: 2.0), // Red border for errors
+                      borderSide: const BorderSide(
+                          color: Colors.red,
+                          width: 2.0), // Red border for errors
                     ),
                     focusedErrorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: const BorderSide(color: Colors.red, width: 2.0),
+                      borderSide:
+                          const BorderSide(color: Colors.red, width: 2.0),
                     ),
                     hintText: '',
-                    hintStyle: const TextStyle(color: Colors.white60), // Subtle hint text color
-                    contentPadding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 16.0), // Adjust padding
+                    hintStyle: const TextStyle(
+                        color: Colors.white60), // Subtle hint text color
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 18.0, horizontal: 16.0), // Adjust padding
                   ),
                 ),
-
 
                 const SizedBox(
                   height: ESizes.spaceBtwInputFields,
@@ -116,36 +142,45 @@ class _LoginState extends State<Login> {
                   controller: pass,
                   cursorColor: Colors.white70,
                   obscureText: _obscureText, // For hiding the password input
-                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                  style: const TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w600),
                   decoration: InputDecoration(
                     filled: true,
-                    fillColor:Colors.transparent.withOpacity(0.15),
-                    prefixIcon:  Icon(
+                    fillColor: Colors.transparent.withOpacity(0.15),
+                    prefixIcon: Icon(
                       Icons.lock_outline_rounded,
                       color: Colors.white.withOpacity(.9),
                     ),
                     labelText: ETexts.password,
-                    labelStyle: const TextStyle(color: Colors.white60, fontSize: 16, fontWeight: FontWeight.w600),
+                    labelStyle: const TextStyle(
+                        color: Colors.white60,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600),
                     floatingLabelBehavior: FloatingLabelBehavior.auto,
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: const BorderSide(color: Colors.white, width: 2.0),
+                      borderSide:
+                          const BorderSide(color: Colors.white, width: 2.0),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: BorderSide(color: Colors.white.withOpacity(0.6), width: 1.5),
+                      borderSide: BorderSide(
+                          color: Colors.white.withOpacity(0.6), width: 1.5),
                     ),
                     errorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: const BorderSide(color: Colors.red, width: 2.0),
+                      borderSide:
+                          const BorderSide(color: Colors.red, width: 2.0),
                     ),
                     focusedErrorBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
-                      borderSide: const BorderSide(color: Colors.red, width: 2.0),
+                      borderSide:
+                          const BorderSide(color: Colors.red, width: 2.0),
                     ),
                     hintText: '',
                     hintStyle: const TextStyle(color: Colors.white60),
-                    contentPadding: const EdgeInsets.symmetric(vertical: 18.0, horizontal: 16.0),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 18.0, horizontal: 16.0),
                     suffixIcon: IconButton(
                       icon: Icon(
                         _obscureText ? Icons.visibility_off : Icons.visibility,
@@ -165,107 +200,129 @@ class _LoginState extends State<Login> {
                     //Forgot Password
                     TextButton(
                       onPressed: () {},
-                      child: const Text(ETexts.forgetPassword, style: TextStyle(color: Colors.purple),),
+                      child: const Text(
+                        ETexts.forgetPassword,
+                        style: TextStyle(color: Colors.purple),
+                      ),
                     ),
                   ],
                 ),
                 const SizedBox(height: ESizes.spaceBtwSections),
                 SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () async {
-                      FocusScope.of(context).unfocus();
-                      try {
-                        // Show loading dialog
-                        showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (BuildContext context) {
-                            return Center(
-                              child: Lottie.asset(EImages.leafLoadingLogo),
-                            );
-                          },
-                        );
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        FocusScope.of(context).unfocus();
+                        try {
+                          // Hide system UI including bottom navigation bar
+                          SystemChrome.setEnabledSystemUIMode(
+                              SystemUiMode.immersiveSticky);
 
-                        // Validate user inputs
-                        if (email.text.isEmpty) {
-                          Navigator.of(context).pop(); // Dismiss the dialog
-                          EHelperFunctions.showSnackBar(context, "Enter your email");
-                          return;
-                        }
+                          // Show loading dialog
+                          showDialog(
+                            useSafeArea: true,
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (BuildContext context) {
+                              return Center(
+                                child: Lottie.asset(EImages.leafLoadingLogo),
+                              );
+                            },
+                          );
 
-                        if (pass.text.isEmpty) {
-                          Navigator.of(context).pop(); // Dismiss the dialog
-                          EHelperFunctions.showSnackBar(context, "Enter your password");
-                          return;
-                        }
+                          // Validate user inputs
+                          if (email.text.isEmpty) {
+                            Navigator.of(context).pop(); // Dismiss the dialog
+                            EHelperFunctions.showSnackBar(
+                                context, "Enter your email");
+                            return;
+                          }
 
-                        // Check internet connectivity
-                        var connectivityResult = await (Connectivity().checkConnectivity());
-                        if (connectivityResult == ConnectivityResult.none) {
-                          Navigator.of(context).pop(); // Dismiss the dialog
-                          EHelperFunctions.showSnackBar(context, 'No internet connection');
-                          return;
-                        }
+                          if (pass.text.isEmpty) {
+                            Navigator.of(context).pop(); // Dismiss the dialog
+                            EHelperFunctions.showSnackBar(
+                                context, "Enter your password");
+                            return;
+                          }
 
-                        // Perform login
-                        bool login = await Api().login(email.text, pass.text);
-                        if (login) {
-                          print('successful');
+                          // Check internet connectivity
+                          var connectivityResult =
+                              await (Connectivity().checkConnectivity());
+                          if (connectivityResult == ConnectivityResult.none) {
+                            Navigator.of(context).pop(); // Dismiss the dialog
+                            EHelperFunctions.showSnackBar(
+                                context, 'No internet connection');
+                            return;
+                          }
+
+                          // Perform login
+                          bool login = await Api().login(email.text, pass.text);
+                          if (login) {
+                            print('successful');
+                            Navigator.of(context).pop(); // Dismiss the dialog
+                            context.go('/home');
+                          } else {
+                            Navigator.of(context).pop();
+                            EHelperFunctions.showSnackBar(
+                                context, globalMessage);
+                          }
+                        } catch (e) {
                           Navigator.of(context).pop(); // Dismiss the dialog
-                          context.go('/home');
-                        } else {
-                          Navigator.of(context).pop();
-                          EHelperFunctions.showSnackBar(context, globalMessage);
-                        }
-                      } catch (e) {
-                        Navigator.of(context).pop(); // Dismiss the dialog
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return Theme(
-                              data: Theme.of(context).copyWith(
-                                dialogBackgroundColor: Theme.of(context).colorScheme.surfaceContainer,
-                              ),
-                              child: AlertDialog(
-                                icon: SizedBox(
-                                  height: EHelperFunctions.screenHeight(context) * .1,
-                                  child: Image.asset(EImages.ipAppLogo),
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Theme(
+                                data: Theme.of(context).copyWith(
+                                  dialogBackgroundColor: Theme.of(context)
+                                      .colorScheme
+                                      .surfaceContainer,
                                 ),
-                                title: Text(
-                                  e.toString(),
-                                  style: GoogleFonts.rubik(
-                                    color: Theme.of(context).colorScheme.primary,
+                                child: AlertDialog(
+                                  icon: SizedBox(
+                                    height:
+                                        EHelperFunctions.screenHeight(context) *
+                                            .1,
+                                    child: Image.asset(EImages.ipAppLogo),
                                   ),
-                                ),
-                                content: Text(
-                                  'Please connect to internet',
-                                  style: GoogleFonts.rubik(
-                                    color: Theme.of(context).colorScheme.primary,
-                                  ),
-                                ),
-                                actions: [
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text('Retry'),
+                                  title: Text(
+                                    e.toString(),
+                                    style: GoogleFonts.rubik(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
-                                ],
-                              ),
-                            );
-                          },
-                        );
-                      }
-                    },
-                    child: const Text(
-                      "Sign in",
-                    ),
-                  ),
-                ),
+                                  content: Text(
+                                    'Please connect to internet',
+                                    style: GoogleFonts.rubik(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
+                                  ),
+                                  actions: [
+                                    SizedBox(
+                                      width: double.infinity,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('Retry'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        } finally {
+                          // Restore system UI overlays
+                          SystemChrome.setEnabledSystemUIMode(
+                              SystemUiMode.edgeToEdge);
+                        }
+                      },
+                      child: const Text(
+                        "Login",
+                      ),
+                    )),
                 // OutlinedButton(onPressed: (){}, child: Text('Login',style: Theme.of(context)
                 //     .textTheme
                 //     .bodySmall!
@@ -289,7 +346,10 @@ class _LoginState extends State<Login> {
                     ),
                     Text(
                       ETexts.supportText1,
-                      style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14, color: Colors.white70),
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                          color: Colors.white70),
                     ),
                     const SizedBox(
                       width: 2,
